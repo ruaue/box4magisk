@@ -10,6 +10,11 @@ source ${scripts_dir}/box.config
 mkdir -p ${run_path}
 mkdir -p ${box_path}/${bin_name}
 
+if [ -f /data/adb/modules/box4magisk/disable ]; then
+    /data/adb/box/scripts/stop.sh
+    exit 0
+fi
+
 # ${box_path}/bin/yq -i ".tproxy-port=${tproxy_port}" ${box_path}/clash/config.yaml
 # ${box_path}/bin/yq -i ".dns.listen=\"${clash_dns_listen}\"" ${box_path}/clash/config.yaml
 # ${box_path}/bin/yq -i ".dns.fake-ip-range=\"${clash_fake_ip_range}\"" ${box_path}/clash/config.yaml
